@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jahseh.API - Estado del API</title>
+<style>
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #141E30, #243B55);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+.container {
+  text-align: center;
+  background: rgba(255,255,255,0.05);
+  padding: 40px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.5);
+  animation: fadeIn 1s ease-in-out;
+}
+@keyframes fadeIn {
+  from {opacity:0; transform: translateY(-20px);}
+  to {opacity:1; transform: translateY(0);}
+}
+h1 { margin-bottom: 10px; }
+.clock { font-size: 36px; font-weight: bold; background: rgba(0,0,0,0.3); border-radius: 15px; padding: 15px; margin: 15px auto; border: 2px solid #1abc9c; }
+button { background: #1abc9c; border: none; padding: 10px 20px; border-radius: 10px; color: white; font-weight: bold; cursor: pointer; transition: 0.3s; }
+button:hover { background: #16a085; }
+#apikey { font-family: monospace; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px; display: inline-block; margin-top: 10px; color: #00e5ff; }
+.endpoints { text-align: left; margin-top: 20px; }
+.endpoints code { background: rgba(0,0,0,0.2); padding: 3px 6px; border-radius: 5px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🛰️ Jahseh.API</h1>
+  <p>Centro de control del sistema multipropósito</p>
+  <div class="clock" id="clock">00:00:00</div>
+  <p><strong>Tiempo activo:</strong> <span id="uptime">0 días 0h 0m 0s</span></p>
+  <button onclick="alert('API Key fija: API-8378428271014065')">Ver API Key</button>
+  <p id="apikey">API-8378428271014065</p>
+  <div class="endpoints">
+    <h3>🔗 Endpoints disponibles:</h3>
+    <ul>
+      <li><b>YouTube:</b> <code>/api/youtube</code></li>
+      <li><b>TikTok:</b> <code>/api/tiktok</code></li>
+      <li><b>Instagram:</b> <code>/api/instagram</code></li>
+      <li><b>Facebook:</b> <code>/api/facebook</code></li>
+    </ul>
+  </div>
+</div>
+<script>
+const startDate = new Date('2025-10-21T00:00:00');
+
+function actualizarUptime() {
+  const now = new Date();
+  let diff = Math.floor((now - startDate)/1000); // segundos
+  const days = Math.floor(diff / 86400);
+  diff %= 86400;
+  const hours = Math.floor(diff / 3600);
+  diff %= 3600;
+  const minutes = Math.floor(diff / 60);
+  const seconds = diff % 60;
+  document.getElementById('uptime').textContent = `${days} días ${hours}h ${minutes}m ${seconds}s`;
+}
+
+function actualizarReloj() {
+  const now = new Date();
+  const h = now.getHours().toString().padStart(2,'0');
+  const m = now.getMinutes().toString().padStart(2,'0');
+  const s = now.getSeconds().toString().padStart(2,'0');
+  document.getElementById('clock').textContent = `${h}:${m}:${s}`;
+}
+
+setInterval(actualizarUptime, 1000);
+setInterval(actualizarReloj, 1000);
+actualizarUptime();
+actualizarReloj();
+</script>
+</body>
+</html>

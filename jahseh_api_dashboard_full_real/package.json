@@ -1,0 +1,16 @@
+{
+  "name": "jahseh-api",
+  "version": "1.0.0",
+  "description": "Jahseh.API multiprop\u00f3sito con panel de control",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5",
+    "node-fetch": "^3.3.2",
+    "cheerio": "^1.0.0-rc.12",
+    "ytdl-core": "^4.11.5"
+  }
+}
